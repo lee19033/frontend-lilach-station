@@ -7,7 +7,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { userService } from '../services/user.service'
 import { carService } from '../services/car.service'
 
-export function CarIndex() {
+export function StationIndex() {
 
     const cars = useSelector(storeState => storeState.carModule.cars)
 
@@ -58,26 +58,8 @@ export function CarIndex() {
 
     return (
         <div>
-            <h3>Cars App</h3>
-            <main>
-                <button onClick={onAddCar}>Add Car ⛐</button>
-                <ul className="car-list">
-                    {cars.map(car =>
-                        <li className="car-preview" key={car._id}>
-                            <Link to={`${car._id}`}>
-                                <h4>{car.vendor}</h4>
-                           </Link>
-                            <h1>⛐</h1>
-                            <p>Price: <span>${car.price.toLocaleString()}</span></p>
-                            <p>Owner: <span>{car.owner && car.owner.fullname}</span></p>
-                            {shouldShowActionBtns(car) && <div>
-                                <button onClick={() => { onRemoveCar(car._id) }}>x</button>
-                                <button onClick={() => { onUpdateCar(car) }}>Edit</button>
-                            </div>}
-                        </li>)
-                    }
-                </ul>
-            </main>
+            <h3>Station App</h3>
+            
         </div>
     )
 }

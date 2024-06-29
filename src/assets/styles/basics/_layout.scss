@@ -1,32 +1,30 @@
 .main-container {
     display: grid;
-    grid-template-columns: 20px 1fr 20px;
-
-    > * {
-        grid-column: 2;
-
-        &.full {
-            grid-column: 1 /-1;
-        }
-    }
+    grid-template-columns: minmax(250px, 1fr) 2fr 1fr;
+    grid-template-rows: 5fr auto;
+    gap: 6px;
+    grid-template-areas: "side main info"
+                         "player player player";
+    height: 100vh;
+    background-color: #f7f8fb;
 
     @include for-narrow-layout {
         grid-template-columns: 
-            minmax(20px, 1fr)
+            minmax(250px, 1fr)
             minmax(auto, $mobile-breakpoint)
-            minmax(20px, 1fr);
+            minmax(250px, 1fr);
     }
     @include for-normal-layout {
         grid-template-columns: 
-            minmax(20px, 1fr)
+            minmax(250px, 1fr)
             minmax(auto, $narrow-breakpoint)
-            minmax(20px, 1fr);
+            minmax(250px, 1fr);
     }
     @include for-wide-layout {
         grid-template-columns: 
-            minmax(20px, 1fr)
+            minmax(250px, 1fr)
             minmax(auto, $normal-breakpoint)
-            minmax(20px, 1fr);
+            minmax(250px, 1fr);
     }
 }
 
@@ -35,4 +33,31 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 20px;
 }
+
+.station-sidebar {
+    grid-area: side;
+    background-color: #f7f8fb;
+    padding: 20px;
+    overflow-y: auto;
+}   
+.station-main {
+    grid-area: main;
+    background-color: #f7f8fb;
+    padding: 20px;
+    overflow-y: auto;
+}   
+
+.station-info {
+    grid-area: info;
+    background-color: #f7f8fb;
+    padding: 20px;
+    overflow-y: auto;
+}   
+
+.station-player {
+    grid-area: player;
+    background-color: #f7f8fb;
+    padding: 20px;
+    overflow-y: auto;
+}   
 

@@ -1,47 +1,31 @@
-import React from 'react'
-import { Routes, Route } from 'react-router'
 
-import { HomePage } from './pages/HomePage'
-import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
-import { CarIndex } from './pages/CarIndex.jsx'
-import { BoardIndex } from './pages/BoardIndex.jsx'
-import { ReviewIndex } from './pages/ReviewIndex.jsx'
-import { ChatApp } from './pages/Chat.jsx'
-import { AdminIndex } from './pages/AdminIndex.jsx'
+import {  Routes, Route } from 'react-router'
 
-import { CarDetails } from './pages/CarDetails'
-import { UserDetails } from './pages/UserDetails'
-import { BoardDetails } from './pages/BoardDetails'
-import { TaskDetails } from './pages/TaskDetails'
-
-import { AppHeader } from './cmps/AppHeader'
-import { AppFooter } from './cmps/AppFooter'
+import { StationIndex} from './pages/StationIndex.jsx'
+import { StationSideBar } from './cmps/StationSideBar.jsx'
+import { SearchStation } from './cmps/SearchStation.jsx'
+import { CollectionDetails } from './cmps/CollectionDetails.jsx'   
+import { AlbumDetails } from './cmps/AlbumDetails.jsx' 
+import { PlaylistDetails } from './cmps/PlaylistDetails.jsx'    
+import { StationInfo } from './cmps/StationInfo.jsx'        
+import { AudioPlayer }   from './cmps/AudioPlayer.jsx'
 
 export function RootCmp() {
     return (
-        <div>
-            <AppHeader />
-            <main>
+            <main className='main-container'>
+                <StationSideBar className='station-sidebar'/>
+                <section className='station-main'>
                 <Routes>
-                    <Route path="" element={<HomePage />} />
-                    <Route path="about" element={<AboutUs />}>
-                        <Route path="team" element={<AboutTeam />} />
-                        <Route path="vision" element={<AboutVision />} />
-                    </Route>
-                    <Route path="car" element={<CarIndex />} />
-                    <Route path="car/:carId" element={<CarDetails />} />
-                    <Route path="user/:id" element={<UserDetails />} />
-                    <Route path="board" element={<BoardIndex />} />
-                    <Route path="board/:boardId" element={<BoardDetails />} >
-                        <Route path="group/:groupId/task/:taskId" element={<TaskDetails />} />
-                    </Route>
-                    <Route path="review" element={<ReviewIndex />} />
-                    <Route path="chat" element={<ChatApp />} />
-                    <Route path="admin" element={<AdminIndex />} />
+                        <Route path="" element={<StationIndex />} />
+                        <Route path="/search" element= {<SearchStation />} />
+                        <Route path="collection/:id" element= {<CollectionDetails />} />
+                        <Route path="album/:id" element= {<AlbumDetails />} />
+                        <Route path="playlist/:id" element= {<PlaylistDetails />} />
                 </Routes>
+                </section>
+                <StationInfo className='station-info' />
+                <AudioPlayer className='station-player' />
             </main>
-            <AppFooter />
-        </div>
     )
 }
 

@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 
-const AudioPlayer = ({ src }) => {
+export function AudioPlayer ({ src })  {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const togglePlay = () => {
@@ -13,6 +13,4 @@ const AudioPlayer = ({ src }) => {
             <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
         </div>
     );
-};
-
-export default AudioPlayer;
+}
