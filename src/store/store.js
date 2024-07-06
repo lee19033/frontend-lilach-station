@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux'
+import { legacy_createStore as createStore, combineReducers } from 'redux'
 
 import { stationReducer } from './station.reducer'
 import { boardReducer } from './board.reducer'
@@ -23,7 +23,9 @@ export const store = createStore(rootReducer, middleware)
 //     console.log('**** Store state changed: ****')
 //     console.log('storeState:\n', store.getState())
 //     console.log('*******************************')
+// window.gStore = store
 // })
+
 
 
 

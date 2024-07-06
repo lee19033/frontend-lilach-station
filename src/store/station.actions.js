@@ -8,7 +8,7 @@ export async function loadStations() {
         console.log('Station load from DB:', stations)
         store.dispatch(getCmdSetStations(stations))
     } catch (err) {
-        console.log('Cannot load statitons', err)
+        console.log('Cannot load stations', err)
         throw err
     }
 }
@@ -19,7 +19,7 @@ export async function loadStation(stationId) {
         console.log('Station from DB:', station)
         store.dispatch(getCmdSetStation(station))
     } catch (err) {
-        console.log('Cannot load car', err)
+        console.log('Cannot load station', err)
         throw err
     }
 }

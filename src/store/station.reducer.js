@@ -6,7 +6,8 @@ export const UPDATE_STATION = 'UPDATE_STATION'
 
 const initialState = {
     stations: [],
-    station: null
+    station: null,
+    filterby: {}
 }
 
 export function stationReducer(state = initialState, action) {
@@ -32,6 +33,7 @@ export function stationReducer(state = initialState, action) {
             newState = { ...state, stations }
             break
         default:
+            return state
     }
     return newState
 }
