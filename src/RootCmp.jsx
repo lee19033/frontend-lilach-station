@@ -9,11 +9,21 @@ import { AlbumDetails } from './cmps/AlbumDetails.jsx'
 import { PlaylistDetails } from './cmps/PlaylistDetails.jsx'    
 import { StationInfo } from './cmps/StationInfo.jsx'        
 import { AudioPlayer }   from './cmps/AudioPlayer.jsx'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { loadStations } from './store/station.actions.js'
 
 export function RootCmp() {
+
+    const stations = useSelector(storeState => storeState.stationModule.stations)
+    const isStationsLoading = useSelector(storeState => storeState.stationModule.isLoading)
+
+    useEffect(() => {               
+        loadStations()} ,[]) 
+    
     return (
             <main className='main-container'>
-                <StationSideBar className='station-sidebar'/>
+                <StationSideBar className='station-sidebar' stations={stations} isLoading={isStationsLoading} />
                 <section className='station-main'>
                 <Routes>
                         <Route path="" element={<StationIndex />} />

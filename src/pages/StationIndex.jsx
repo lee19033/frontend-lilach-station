@@ -1,21 +1,18 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { loadCars, addCar, updateCar, removeCar, addCarMsg } from '../store/car.actions'
+import { loadStation, loadStations } from '../store/station.actions'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { userService } from '../services/user.service'
-import { carService } from '../services/car.service'
+import { stationService } from '../services/station.service'
 
 export function StationIndex() {
 
-    const cars = useSelector(storeState => storeState.carModule.cars)
+    //const sta = useSelector(storeState => storeState.carModule.cars)
 
-    useEffect(() => {
-        loadCars()
-    }, [])
 
-    async function onRemoveCar(carId) {
+    /*async function onRemoveCar(carId) {
         try {
             await removeCar(carId)
             showSuccessMsg('Car removed')            
@@ -54,7 +51,7 @@ export function StationIndex() {
         if (!user) return false
         if (user.isAdmin) return true
         return car.owner?._id === user._id
-    }
+    }*/
 
     return (
         <div>
