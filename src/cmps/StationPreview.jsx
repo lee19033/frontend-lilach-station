@@ -6,9 +6,18 @@ export function StationPreview({ station })  {
 
     return (
     <Link to={`/${station.type}/${station._id}`}>
-    <div>
-                <h3 className="station-name">{station.name}</h3>
-    </div>
+    <div className="playlist-preview">
+                <img src={station.coverImageUrl} alt={station.name} className="playlist-cover-image" />
+                <span className="material-symbols-outlined">
+                    favorite
+                    </span>
+            <div className="playlist-info">
+                <h3 className="playlist-name">{station.name}</h3>
+                <p className="playlist-description">{station.description}</p>
+                <p className="playlist-track-count">{station.trackCount} songs</p>
+            </div>
+            </div>
     </Link>
+    
     );
 }

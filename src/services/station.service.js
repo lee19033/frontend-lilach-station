@@ -69,12 +69,13 @@ async function save(station) {
     return savedStation
 }
 
-function createStation(name, tags, createdBy) {
+function createStation(name, tags, createdBy, type) {
     return {
         name,
         tags,
         createdBy,
-        songs: []
+        songs: [],
+        type
     }
 }   
 

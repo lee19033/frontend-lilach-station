@@ -1,0 +1,44 @@
+.playlist-preview {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 20px;
+}
+
+.playlist-image-container {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 4px; /* Adjust for rounded corners */
+  margin-right: 20px;
+}
+
+.playlist-cover-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.playlist-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.playlist-name {
+  margin: 0;
+  font-size: 16px; /* Adjust based on your design */
+}
+
+.playlist-description {
+  font-size: 14px; /* Adjust based on your design */
+  color: #666; /* Lighter text color for the description */
+}
+
+.playlist-track-count {
+  font-size: 14px; /* Adjust based on your design */
+  color: #666; /* Lighter text color for the track count */
+}

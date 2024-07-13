@@ -1,0 +1,13 @@
+.station-sidebar{
+    color: gray
+}
+
+.search-bar {
+    background-color: #121212;
+    &.search-bar--home {
+        color: #b3b3b3;
+    }
+    &.search-bar--search {
+        color: #ffffff;
+    }
+}

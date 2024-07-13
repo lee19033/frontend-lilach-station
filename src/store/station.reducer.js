@@ -3,10 +3,12 @@ export const SET_STATION = 'SET_STATION'
 export const REMOVE_STATION = 'REMOVE_STATION'
 export const ADD_STATION = 'ADD_STATION'
 export const UPDATE_STATION = 'UPDATE_STATION'
+export const SET_VIDEO_ID = 'SET_VIDEO_ID'
 
 const initialState = {
     stations: [],
     station: null,
+    videoId: null,
     filterby: {}
 }
 
@@ -20,6 +22,9 @@ export function stationReducer(state = initialState, action) {
         case SET_STATION:
             newState = { ...state, station: action.station }
             break
+        case SET_VIDEO_ID:  
+            newState = { ...state, videoId: action.videoId }
+            break       
         case REMOVE_STATION:
             const lastRemovedStation = state.stations.find(station => (station._id === action.stationId))
             stations = state.stations.filter(station => station._id !== action.stationId)

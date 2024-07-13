@@ -1,6 +1,6 @@
 
 import {  Routes, Route } from 'react-router'
-
+import { useState } from 'react'
 import { StationIndex} from './pages/StationIndex.jsx'
 import { StationSideBar } from './cmps/StationSideBar.jsx'
 import { SearchStation } from './cmps/SearchStation.jsx'
@@ -10,18 +10,37 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStations } from './store/station.actions.js'
 import { StationDetails } from './cmps/StationDetails.jsx'
+import { addStation } from './store/station.actions.js' 
+import { STATION_TYPE } from './helpers/const.js'
+import { utilService } from './services/util.service.js'
+    
+
+
+const stationToCreate = {
+    id: utilService.makeId(), 
+    name: 'Liked Songs',
+    type: STATION_TYPE.LIBARY,
+    tags: [],
+    createdBy:{},
+    likeByUsers: [{}],
+    songs: [{}]    
+}
 
 export function RootCmp() {
 
     const stations = useSelector(storeState => storeState.stationModule.stations)
-    const isStationsLoading = useSelector(storeState => storeState.stationModule.isLoading)
+    const [initialLoadDone, setInitialLoadDone] = useState(false);   
 
-    useEffect(() => {               
-        loadStations()} ,[]) 
+    useEffect(() => {
+        async function init() {
+            await loadStations();
+        }
+        init();
+    }, []); // Empty dependency array means this effect runs only once after the initial render
     
     return (
             <main className='main-container'>
-                <StationSideBar className='station-sidebar' stations={stations} isLoading={isStationsLoading} />
+                <StationSideBar className='station-sidebar' stations={stations} isLoading={initialLoadDone} />
                 <section className='station-main'>
                 <Routes>
                         <Route path="" element={<StationIndex />} />

@@ -1,5 +1,7 @@
 
 import { storageService } from './async-storage.service'
+import { utilService } from './util.service'
+import { STATION_TYPE } from '../helpers/const' 
 
 const STORAGE_KEY = 'station'
 
@@ -8,10 +10,10 @@ export const stationService = {
     getById,
     save,
     remove,
-    createStation
+    createStation,
+    getEmptyStation,
 }
 window.cs = stationService
-
 
 async function query(filterBy = { txt: '', price: 0 }) {
     var stations = await storageService.query(STORAGE_KEY)
@@ -39,7 +41,16 @@ async function save(station) {
     if (station._id) {
         const stationToSave = {
             _id : station._id,
-            name : station.name
+            name : station.name,
+            type : station.type,
+            tags : [],
+            createdBy: {
+                id: 'u101',
+                fullname: 'Admin',
+                imgUrl: 'https://i.pravatar.cc/150?u=admin'  
+            },
+            likedByUsers: [{}],
+            songs: station.songs,
         }
         savedStation = await storageService.put(STORAGE_KEY, stationToSave)
     } else {
@@ -55,42 +66,40 @@ async function save(station) {
 }
 
 async function createStation(station) {
-    console.log('createStation:', name)
+    console.log('createStation:', station.name)
     var savedStation
     const stationToSave = {
-        id : station.id,
+        _id : station._id,
         name : station.name,
         type : station.type,
         tags : [],
         createdBy: {
-            _id: 'u101',
-            fullname: 'Puki Ben David',
-            imgUrl: 'https://i.pravatar.cc/150?u=puki'  
+            id: 'u101',
+            fullname: 'Admin',
+            imgUrl: 'https://i.pravatar.cc/150?u=admin'  
         },
         likedByUsers: [{}],
-        songs: [{
-            id: "s101",
-            title:  'Song1',
-            url: 'https://www.youtube.com/watch?v=2Vv-BfVoq4g',
-            addedBy: {},
-            likeBy: [{}],
-            addedAt:  new Date()  
-        } ,
-        {
-            id: "s102",
-            title:  'Song2',
-            url: 'https://www.youtube.com/watch?v=2Vv-BfVoq4g',
-            addedBy: {},
-            likeBy: [{}],
-            addedAt:  new Date()  
-        } 
-        ],
+        songs: [...station.songs],
     }
     savedStation = await storageService.post(STORAGE_KEY, stationToSave)
     return savedStation
 }   
 
-
+async function getEmptyStation() {
+    const station  = 
+    { station: 
+        {
+            _id: utilService.makeId(), 
+            name: 'Liked Songs',
+            type: STATION_TYPE.LIBARY,
+            tags: [],
+            createdBy:{},
+            likeByUsers: [{}],
+            songs: [{}]    
+        }            
+    }    
+    return station
+}
 
 // TEST DATA
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))

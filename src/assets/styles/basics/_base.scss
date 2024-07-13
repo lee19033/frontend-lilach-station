@@ -52,3 +52,28 @@ li {
     list-style: none;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.popover-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%; /* Adjust these to control the popover position */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the popover */
+    background-color: white;
+    padding: 20px;
+    width: 150px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 100; /* Ensure it's above other content */
+  }
+  .parent-container { /* The parent element of your popover */
+    position: relative;
+  }

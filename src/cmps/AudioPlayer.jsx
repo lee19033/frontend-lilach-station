@@ -1,16 +1,26 @@
 import  { useState } from 'react';
+import { useSelector } from 'react-redux';
+import YouTube from 'react-youtube';
 
-export function AudioPlayer ({ src })  {
+
+export function AudioPlayer ()  {
     const [isPlaying, setIsPlaying] = useState(false);
+    const videoId = useSelector(storeState => storeState.stationModule.videoId); // Get the video ID from the store
 
-    const togglePlay = () => {
-        setIsPlaying(!isPlaying);
-    };
+    const opts = {
+        height: '80',
+        width: '1000',
+        playerVars: {
+          // https://developers.google.com/youtube/player_parameters
+          autoplay: 1,
+        },
+      };
 
     return (
-        <div>
-            <audio src={src} controls={true} autoPlay={false} />
-            <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
+        <div style={{backgroundColor: 'black', width:'100%'}}>
+            {videoId && 
+                <YouTube videoId={videoId} opts={opts} />
+            }
         </div>
     );
 }

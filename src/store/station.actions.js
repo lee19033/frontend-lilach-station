@@ -1,11 +1,27 @@
 import { stationService } from '../services/station.service.local'
 import { store } from './store'
-import { ADD_STATION, REMOVE_STATION, SET_STATIONS, SET_STATION, UPDATE_STATION } from './station.reducer'
+import { ADD_STATION, REMOVE_STATION, SET_STATIONS, SET_STATION, UPDATE_STATION, SET_VIDEO_ID } from './station.reducer'
+import { utilService } from '../services/util.service'
+import { STATION_TYPE } from '../helpers/const'
+
+const stationToCreate = {
+    id: utilService.makeId(), 
+    name: 'Liked Songs',
+    type: STATION_TYPE.LIBARY,
+    tags: [],
+    createdBy:{},
+    likeByUsers: [{}],
+    songs: []    
+}
 
 export async function loadStations() {
     try {
         const stations = await stationService.query()
-        console.log('Station load from DB:', stations)
+        console.log('Station load from DB:', stations.length)
+        if (stations.length === 0) {    
+            console.log('No stations in DB, creating default stations')
+            addStation(stationToCreate)
+        }
         store.dispatch(getCmdSetStations(stations))
     } catch (err) {
         console.log('Cannot load stations', err)
@@ -60,6 +76,10 @@ export async function updateStation(station) {
     }
 }
 
+export function setVideo(videoId) {
+    store.dispatch(getCmdSetVideoId(videoId))       
+}
+    
 // Command Creators:
 function getCmdSetStations(stations) {
     return {
@@ -92,6 +112,12 @@ function getCmdUpdateStation(station) {
     }
 }
 
+function getCmdSetVideoId(videoId) {
+    return {
+        type: SET_VIDEO_ID,
+        videoId
+    }
+}       
 
 // unitTestActions()
 async function unitTestActions() {

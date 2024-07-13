@@ -1,26 +1,17 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { addStation } from '../store/station.actions.js' 
 import { utilService } from '../services/util.service.js'
 import { STATION_TYPE } from "../helpers/const.js";
 import { StationPreview } from "./StationPreview.jsx";
 import { loadStation } from '../store/station.actions.js'
-import { useNavigate } from 'react-router-dom'  
+
 
 // eslint-disable-next-line react/prop-types
 export function StationSideBar({ stations }) {
-
+    const [searchQuery, setSearchQuery] = useState('')
     
-    const stationToCreate = {
-        id: utilService.makeId(), 
-        name: `New Station${utilService.makeId()}`,
-        type: STATION_TYPE.ALBUM,
-        tags: [],
-        createdBy:{},
-        likeByUsers: [{}],
-        songs: [{}]    
-    }
-
     const stationClick = (id, ev) => {     
         ev.stopPropagation() 
         console.log('Station clicked')
@@ -28,15 +19,16 @@ export function StationSideBar({ stations }) {
         //navigate(`/mail/${folder}/${mail.id}` + composeSearchParam)
     }
     return (
-        <div>
+        <div className="station-sidebar">
+            <div className="search-bar">
             {/* Your component content goes here */}
-            <div><button onClick={() => {
-                addStation(stationToCreate)
-            }}>Create station</button></div>
-            <Link to="search">Search</Link>
-            <Link to="">Home</Link>
+            <Link to="" className="search-bar search-bar--home">Home</Link>
+            <div>
+                <Link to={`/search`} className="search-bar search-bar--search">Search</Link>
+            </div>
+            </div>
             <ul>
-                {stations.map(station => (
+                {stations && stations.map(station => (
                     <li key={station._id} onClick={(ev) => stationClick(station._id, ev)}>
                         <StationPreview key={station._id} station={station} />
                     </li>
