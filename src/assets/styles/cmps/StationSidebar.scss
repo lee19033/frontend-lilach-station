@@ -1,13 +1,71 @@
 .station-sidebar{
-    color: gray
+    //color: gray
 }
 
 .search-bar {
-    background-color: #121212;
-    &.search-bar--home {
-        color: #b3b3b3;
+    background-color: $clr2;
+    height: 80px;
+    width: 274px;
+    padding: 4px;
+    border-radius: 8px;
+    &.home {
+        color: $clr3;
+        display: flex;
+        align-items: start; 
+        &.home-icon {
+            margin-right: 10px;
+        }
+        &.home-text {
+            
+        }
     }
     &.search-bar--search {
-        color: #ffffff;
+        color: $clr4;
     }
+}//274 40 
+
+.my-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.my-icon {
+    vertical-align: middle; // Gap between icon and text
+    color: $clr3;
+}
+
+.my-text {
+    font-size: 16px; // Adjust the size as needed
+    margin-left: 20px;
+    margin-top: 12px;
+    color: $clr3;
+
+}
+
+.x-conf {
+    display: flex;
+    justify-content: space-between;
+}
+
+.libary-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    background-color: $clr2;
+    width: 274px;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.libary-title {
+    color: $clr4;
+    font-size: 16px;
+    margin-left: 20px;
+    margin-top: 12px;
+}   
+
+.libary-list {
+    overflow-y: auto;
 }

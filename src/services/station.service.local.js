@@ -23,7 +23,7 @@ async function query(filterBy = { txt: '', price: 0 }) {
     }
     
     // Return just preview info about the boards
-    stations = stations.map(({ _id, name, songs, type }) => ({ _id, name, songs, type }))
+    stations = stations.map(({ _id, name, songs, type, cover }) => ({ _id, name, songs, type, cover }))
     return stations
 }
 
@@ -80,6 +80,10 @@ async function createStation(station) {
         },
         likedByUsers: [{}],
         songs: [...station.songs],
+        cover: station?.songs[0]?.snippet?.thumbnails?.default?.url
+    }
+    if (station.name === 'Liked Songs') {
+        stationToSave.cover = 'liked-songs.jpg'
     }
     savedStation = await storageService.post(STORAGE_KEY, stationToSave)
     return savedStation
@@ -95,7 +99,8 @@ async function getEmptyStation() {
             tags: [],
             createdBy:{},
             likeByUsers: [{}],
-            songs: [{}]    
+            songs: [{}],
+            cover: 'liked-songs.jpg'   
         }            
     }    
     return station

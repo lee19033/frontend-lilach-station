@@ -40,7 +40,7 @@ export function RootCmp() {
     
     return (
             <main className='main-container'>
-                <StationSideBar className='station-sidebar' stations={stations} isLoading={initialLoadDone} />
+                <StationSideBar stations={stations} isLoading={initialLoadDone} />
                 <section className='station-main'>
                 <Routes>
                         <Route path="" element={<StationIndex />} />
@@ -51,8 +51,8 @@ export function RootCmp() {
                         <Route path="playlist/:id" element= {<StationDetails />} />
                 </Routes>
                 </section>
-                <StationInfo className='station-info' />
-                <AudioPlayer className='station-player' />
+                <StationInfo />
+                <AudioPlayer />
             </main>
     )
 }

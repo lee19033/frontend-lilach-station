@@ -1,9 +1,7 @@
-.playlist-preview {
+.station-preview {
   display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-  margin-bottom: 20px;
+  color: $clr3;
+  margin-bottom: 10px;
 }
 
 .playlist-image-container {
@@ -13,29 +11,37 @@
   width: 60px;
   height: 60px;
   overflow: hidden;
-  border-radius: 4px; /* Adjust for rounded corners */
-  margin-right: 20px;
+  border-radius: 6px; /* Adjust for rounded corners */
+  margin-right: 10px;
 }
 
 .playlist-cover-image {
   width: 50px;
   height: 50px;
-  object-fit: cover;
+  border-radius: 6px; /* Adjust for rounded corners */
+  object-fit: none;
+  &.liked {
+    object-fit: cover;
+  }
 }
 
 .playlist-info {
   display: flex;
   flex-direction: column;
+  font-size: 14px;
+  color: $clr3;
 }
 
 .playlist-name {
-  margin: 0;
-  font-size: 16px; /* Adjust based on your design */
+  margin-left: 10px;
+  font-size: 14px; /* Adjust based on your design */
+  color: $clr5; /* Darker text color for the name */
 }
 
-.playlist-description {
+.playlist-type {
   font-size: 14px; /* Adjust based on your design */
-  color: #666; /* Lighter text color for the description */
+  color: $clr4; /* Lighter text color for the description */
+  margin-left: 10px;
 }
 
 .playlist-track-count {

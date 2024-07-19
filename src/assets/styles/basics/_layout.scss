@@ -1,13 +1,13 @@
 .main-container {
     display: grid;
     grid-template-columns: minmax(250px, 1fr) 2fr 1fr;
-    grid-template-rows: 5fr 0.5fr;
+    grid-template-rows: 5fr auto;
     gap: 6px;
     grid-template-areas: "side main info" "player player player";
     height: 100vh;
     background-color: #000000;;
 
-    @include for-narrow-layout {
+    /*@include for-narrow-layout {
         grid-template-columns: 
             minmax(250px, 1fr)
             minmax(auto, $mobile-breakpoint)
@@ -24,7 +24,7 @@
             minmax(250px, 1fr)
             minmax(auto, $normal-breakpoint)
             minmax(250px, 1fr);
-    }
+    }*/
 }
 
 .card-grid {
@@ -54,6 +54,6 @@
 
 .station-player {
     grid-area: player;
-    padding: 20px;
+    padding: 6px;
 }   
 

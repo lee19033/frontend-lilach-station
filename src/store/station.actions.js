@@ -11,11 +11,13 @@ const stationToCreate = {
     tags: [],
     createdBy:{},
     likeByUsers: [{}],
-    songs: []    
+    songs: [],
+    cover: 'liked-songs.jpg'
 }
 
 export async function loadStations() {
     try {
+        debugger
         const stations = await stationService.query()
         console.log('Station load from DB:', stations.length)
         if (stations.length === 0) {    

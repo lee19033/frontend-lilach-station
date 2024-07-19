@@ -9,7 +9,7 @@ export function AudioPlayer ()  {
 
     const opts = {
         height: '80',
-        width: '1000',
+        width: '100%',
         playerVars: {
           // https://developers.google.com/youtube/player_parameters
           autoplay: 1,
@@ -17,7 +17,7 @@ export function AudioPlayer ()  {
       };
 
     return (
-        <div style={{backgroundColor: 'black', width:'100%'}}>
+        <div className='station-player'>
             {videoId && 
                 <YouTube videoId={videoId} opts={opts} />
             }

@@ -22,18 +22,43 @@ export function StationSideBar({ stations }) {
         <div className="station-sidebar">
             <div className="search-bar">
             {/* Your component content goes here */}
-            <Link to="" className="search-bar search-bar--home">Home</Link>
-            <div>
-                <Link to={`/search`} className="search-bar search-bar--search">Search</Link>
+            
+                <div className="my-container">
+                
+                    <div>
+                    <Link to="">
+                        <div className="x-cont">
+                        <span className="material-symbols-rounded my-icon">Home</span>
+                        <span className="my-text">Home</span>
+                        </div>
+                    </Link>
+                    </div>
+            
+                    <div>
+                        <Link to={`/search`} >
+                        <span className="material-symbols-rounded my-icon">
+                        Search
+                        </span>
+                        <span className="my-text">Search</span>
+                        </Link>
+                    </div>
             </div>
             </div>
-            <ul>
-                {stations && stations.map(station => (
-                    <li key={station._id} onClick={(ev) => stationClick(station._id, ev)}>
-                        <StationPreview key={station._id} station={station} />
-                    </li>
-                ))}
-            </ul>        
+            <div className="libary-container">
+                <div className="libary-title"><span className="material-symbols-outlined">
+                                                collections_bookmark
+                                                </span>
+                                    Your Libarary</div>
+                <div className="libary-list">
+                <ul>
+                    {stations && stations.map(station => (
+                        <li key={station._id} onClick={(ev) => stationClick(station._id, ev)}>
+                            <StationPreview key={station._id} station={station} />
+                        </li>
+                    ))}
+                </ul>   
+                </div>
+            </div>     
         </div>
     );
 }

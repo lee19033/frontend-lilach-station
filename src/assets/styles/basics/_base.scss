@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    outline: 1px lightgray solid    ;
+    /*outline: 1px lightgray solid    ;*/
     
 }
 
@@ -16,10 +16,11 @@ html {
 }
 
 body {
-    font-size: rem(18px);
+    font-size: rem(16px);
     margin: 0;
     /*max-width: 1024px;*/
     margin: auto;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
