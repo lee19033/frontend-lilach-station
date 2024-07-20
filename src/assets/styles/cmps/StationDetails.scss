@@ -1,0 +1,53 @@
+.station-details {
+    background-color: $clr2;
+}
+
+.station-details-header {
+    display: flex;
+    color: $clr3;
+    margin-bottom: 10px;
+    height: 150px;
+}
+
+.station-cover-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 6px; /* Adjust for rounded corners */
+    object-fit: none;
+    &.liked {
+      object-fit: cover;
+    }
+  }
+
+  .station-details-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: $clr3;
+    height: 150px;
+  } 
+
+  .station-name {
+    margin-left: 10px;
+    font-size: 72px; /* Adjust based on your design */
+    color: $clr5; /* Darker text color for the name */
+  }
+  
+  .station-type {
+    font-size: 14px; /* Adjust based on your design */
+    color: $clr4; /* Lighter text color for the description */
+    margin-left: 10px;
+  }
+  
+  .station-track-count {
+    font-size: 14px; /* Adjust based on your design */
+    color: #666; /* Lighter text color for the track count */
+  }
+
+  .station-action{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    color: $clr6;
+    font-size: 54px;
+  } 

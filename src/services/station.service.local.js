@@ -51,6 +51,7 @@ async function save(station) {
             },
             likedByUsers: [{}],
             songs: station.songs,
+            cover: station.cover //station?.songs[0]?.snippet?.thumbnails?.default?.url
         }
         savedStation = await storageService.put(STORAGE_KEY, stationToSave)
     } else {

@@ -36,18 +36,15 @@
 .station-sidebar {
     grid-area: side;
     padding: 20px;
-    overflow-y: auto;
 }   
 .station-main {
     grid-area: main;
-    background-color: #f7f8fb;
     padding: 20px;
     overflow-y: auto;
 }   
 
 .station-info {
     grid-area: info;
-    background-color: #f7f8fb;
     padding: 20px;
     overflow-y: auto;
 }   

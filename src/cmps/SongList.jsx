@@ -38,7 +38,8 @@ return (
             <div className="song-item" key={idx} onClick={() => onPlay(song.snippet.resourceId.videoId)}>
                 <img src={song?.snippet?.thumbnails?.default?.url} alt={song?.snippet?.title} className="song-thumbnail" />
                 <div className="song-info">
-                    <h2 className="song-title">{song?.snippet?.title}</h2>
+                    <div className="song-info-title">{song?.snippet?.title}</div>
+                    <div className="song-title artist">{song?.snippet?.videoOwnerChannelTitle}</div>
                 </div>
                 <button className="play-button">Play</button>
                 <button className="play-button" onClick={() => addSongToPlayList(song, true)}>Add</button>

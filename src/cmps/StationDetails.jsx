@@ -8,6 +8,7 @@ import { SongList } from './SongList';
 import { stationService } from '../services/station.service.local';
 import { STATION_TYPE } from '../helpers/const';  
 import { utilService } from '../services/util.service';
+import likedSongs from '../assets/img/liked-songs.jpg'  
 
 export function StationDetails() {
     const station = useSelector(storeState => storeState.stationModule.station);
@@ -79,7 +80,9 @@ export function StationDetails() {
         tags: [],
         createdBy:{},
         likeByUsers: [{}],
-        songs: [song]    
+        songs: [song],
+        cover: song.snippet.thumbnails.default.url,
+        high: song.snippet.thumbnails.high.url    
       }
       addStation(newStation);
     }
@@ -96,14 +99,29 @@ export function StationDetails() {
     }
 
     return (
-        <div>
-          <p>staion details</p>
-            <p>{station ? station.name : ''}</p>
-            <p>{station ? station.type : ''}</p>
-            {/* Display playlistId if available */}
-            <p>{lastPart ? lastPart : 'No playlist ID in query'}</p>
-            {/*/move to <SongList/>*/}
-            {/* Use the SongList component */}
+        <div className='station-details'>
+          <div className='station-details-header'>
+          {station && 
+            (station?.cover==='liked-songs.jpg') 
+            ?   
+              <img src={likedSongs} alt={station?.name} className="station-cover-image liked" />
+              : <img src={station?.cover} alt={station?.name} className="station-cover-image" />
+          
+        }
+                
+            <div className="staion-details-info">
+              <p className="station-type">{station?.type}</p>
+              <span className="station-name">{station?.name?.substring(0,10)}</span>
+              <p className="station-type">{station?.name}</p>
+                
+            </div>
+            </div>
+            <div className="station-details-actions"> 
+            <span className="material-symbols-outlined station-action">
+                play_circle
+                </span>
+            </div>
+
             {songs && <SongList songs={songs} onPlay={setVideo} addToLikeSongs={addToLikeSongs} addToPlaylist={addToPlaylist} />}
         </div>
     );
