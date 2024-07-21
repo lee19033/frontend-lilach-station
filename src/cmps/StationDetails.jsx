@@ -98,6 +98,22 @@ export function StationDetails() {
 
     }
 
+    function addToLibary() {  
+      //add new Album to libary
+      const newStation = {
+        id: utilService.makeId(), 
+        name: songs[0].snippet.title,
+        type: STATION_TYPE.ALBUM,
+        tags: [],
+        createdBy:{},
+        likeByUsers: [{}],
+        songs: songs,
+        cover: songs[0].snippet.thumbnails.default.url,
+        high: songs[0].snippet.thumbnails.high.url   
+      }
+      addStation(newStation);
+    }
+
     return (
         <div className='station-details'>
           <div className='station-details-header'>
@@ -112,7 +128,7 @@ export function StationDetails() {
             <div className="staion-details-info">
               <p className="station-type">{station?.type}</p>
               <span className="station-name">{station?.name?.substring(0,10)}</span>
-              <p className="station-type">{station?.name}</p>
+              <p className="station-type">{station?.name.substring(0,30)}</p>
                 
             </div>
             </div>
@@ -120,6 +136,9 @@ export function StationDetails() {
             <span className="material-symbols-outlined station-action">
                 play_circle
                 </span>
+                <span class="material-symbols-outlined" onClick={addToLibary}>
+add_circle
+</span>
             </div>
 
             {songs && <SongList songs={songs} onPlay={setVideo} addToLikeSongs={addToLikeSongs} addToPlaylist={addToPlaylist} />}
