@@ -1,0 +1,40 @@
+.song-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.song-info-container {
+    flex-grow: 1;
+}
+.song-info-title {
+    font-size: 16px;
+    color: $clr3;
+    &.artist {
+        color: $clr4;
+        font-size: 14px;
+    }
+}
+
+.song-title {
+    margin: 0;
+}
+
+.song-thumbnail {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    object-fit: none;
+    border-radius: 6px;
+
+    &.medium {
+        width: 56px;
+        height: 56px;
+    }
+
+    &.hide {
+        display: none;
+    }   
+}

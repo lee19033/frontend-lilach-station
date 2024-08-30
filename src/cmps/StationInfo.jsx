@@ -19,7 +19,7 @@ export function StationInfo()  {
 
     return (
     
-        <div className='station-info'>
+        <div className='station-info scrollable-element'>
             {/* Your component content goes here */}
             {station?.songs && 
                 <div>

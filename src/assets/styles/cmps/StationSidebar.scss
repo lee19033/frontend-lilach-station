@@ -1,5 +1,8 @@
 .station-sidebar{
     //color: gray
+    &.scrollable-element {
+        overflow-y: scroll;
+    }   
 }
 
 .search-bar {

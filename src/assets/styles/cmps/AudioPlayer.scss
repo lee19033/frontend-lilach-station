@@ -1,0 +1,45 @@
+.youtube-audio-player iframe {
+    display: none;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .controls button {
+    background-color: #1db954;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .controls button:hover {
+    background-color: #1ed760;
+  }
+  
+  .controls .play-pause::before {
+    content: '▶';
+    font-size: 24px;
+  }
+  
+  .controls .play-pause.pause::before {
+    content: '⏸';
+  }
+  
+  .controls .volume::before {
+    content: '🔊';
+    font-size: 24px;
+  }
+  

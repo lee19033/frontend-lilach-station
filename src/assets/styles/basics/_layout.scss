@@ -1,11 +1,12 @@
 .main-container {
     display: grid;
     grid-template-columns: minmax(250px, 1fr) 2fr 1fr;
-    grid-template-rows: 5fr auto;
-    gap: 6px;
-    grid-template-areas: "side main info" "player player player";
+    grid-template-rows: auto 72px;
+    gap: 8px;
+    grid-template-areas: "side main info" "song player video";
     height: 100vh;
-    background-color: #000000;;
+    background-color: #000000;
+    overflow: hidden;
 
     /*@include for-narrow-layout {
         grid-template-columns: 
@@ -36,21 +37,63 @@
 .station-sidebar {
     grid-area: side;
     padding: 20px;
+    background-color: $clr2;
+    border-radius: 8px;
 }   
 .station-main {
     grid-area: main;
     padding: 20px;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
+    background-color: $clr2;
+    border-radius: 8px;
+    &.scrollable-element {
+        overflow-y: scroll;
+      }
 }   
 
 .station-info {
     grid-area: info;
     padding: 20px;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
+    background-color: $clr2;
+    border-radius: 8px;
+    &.scrollable-element {
+        overflow-y: scroll;
+      } 
 }   
 
-.station-player {
-    grid-area: player;
+.station-player-video {
+    grid-area: video;
     padding: 6px;
 }   
 
+.station-player-song {
+    grid-area: song;    
+    padding: 6px;
+}
+
+// styles.scss
+@mixin custom-scrollbar($size: 8px, $thumb-color: $gray4, $track-color: #121212, $thumb-hover-color: $clr4) {
+    &::-webkit-scrollbar {
+      width: $size;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $thumb-color;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background: $track-color;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: $thumb-hover-color;
+      }
+  
+    scrollbar-color: $thumb-color $track-color;
+    scrollbar-width: thin;
+  }
+  
+  .scrollable-element {
+    @include custom-scrollbar;
+  }
+  

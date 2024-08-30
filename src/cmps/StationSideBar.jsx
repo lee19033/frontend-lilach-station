@@ -19,7 +19,7 @@ export function StationSideBar({ stations }) {
         //navigate(`/mail/${folder}/${mail.id}` + composeSearchParam)
     }
     return (
-        <div className="station-sidebar">
+        <div className="station-sidebar scrollable-element">
             <div className="search-bar">
             {/* Your component content goes here */}
             

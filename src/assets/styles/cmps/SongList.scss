@@ -2,6 +2,7 @@
 .song-list {
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
 }
 
 .song-item {
@@ -10,31 +11,17 @@
     margin-bottom: 10px;
     cursor: pointer;
     font-size: 14px;
+    height: 56px;
+    padding: 0 16px;
+    &:hover {
+        background-color: $gray6;
+    }   
 }
 
-.song-thumbnail {
-    width: 40px;
-    height: 40px;
-    margin-right: 20px;
-    object-fit: none;
-    border-radius: 6px;
-}
+.song-index {
+    margin-right: 10px;
+}   
 
-.song-info {
-    flex-grow: 1;
-}
-.song-info-title {
-    font-size: 16px;
-    color: $clr3;
-    &.artist {
-        color: $clr4;
-        font-size: 14px;
-    }
-}
-
-.song-title {
-    margin: 0;
-}
 
 .play-button {
     background-color: #1DB954;

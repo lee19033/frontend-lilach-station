@@ -41,7 +41,7 @@ export function RootCmp() {
     return (
             <main className='main-container'>
                 <StationSideBar stations={stations} isLoading={initialLoadDone} />
-                <section className='station-main'>
+                <section className='station-main scrollable-element'>
                 <Routes>
                         <Route path="" element={<StationIndex />} />
                         <Route path="/search" element= {<SearchStation />} />
